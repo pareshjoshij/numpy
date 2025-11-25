@@ -464,7 +464,6 @@ def bench(ctx, tests, compare, verbose, quick, factor, commits, build_dir):
             echo=False,
             output=False
         )
-        os.chdir('..')
 
         np_ver = p.stdout.strip().decode('ascii')
         click.secho(
@@ -472,7 +471,7 @@ def bench(ctx, tests, compare, verbose, quick, factor, commits, build_dir):
             bold=True, fg="bright_green"
         )
         cmd = [
-            'asv', 'run', '--dry-run', '--show-stderr', '--python=same'
+            'asv', 'run', '--show-stderr', '--python=same'
         ] + bench_args
         _run_asv(cmd)
     else:
